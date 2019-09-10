@@ -1,0 +1,44 @@
+#this is comment in yaml
+
+person:
+  name: "mike"
+  name2: &name2 "mike2" # add of anchor for accessing of value
+  age: 23
+  age2: !!float 23 # rendered as 23.0
+  gpa: 3.5
+  gpa2 : !!str 3.5 # rendered as 3.5
+  birthday: 1994-02-06
+  other: null
+  hobbies:
+    - hiking
+    - movies
+    - riding bikes
+  movies: ["good", "bad"]
+  friends:
+    - name: "steph"
+      age: 22
+    - {name: "adam", age: 22}
+    -
+      name: "jope"
+      age: 23
+    description: >
+      jjdjjdjdjdjdjdj.
+      djjdjdjdjdjdjdjdj,
+      jdjdjdjdjdjdjjdjdjdd.
+    signature: |
+      mike
+      abc home
+      abc@abc.com
+    id: *name2 # get render as "mike2". the changes in name2 up there, will be reflected here too.
+
+    base: &base
+      var1: value1
+
+    foo:
+      <<: *base #get render as var1: value1
+      var2: value2
+
+
+
+person.name #to access person object attribute
+
